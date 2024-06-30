@@ -1,0 +1,1 @@
+{:optimizations :advanced, :main sketches.circles, :output-to "target/public/cljs-out/circles-main.js", :output-dir "target/public/cljs-out/circles", :asset-path "/cljs-out/circles", :aot-cache false}

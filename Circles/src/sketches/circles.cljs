@@ -25,7 +25,7 @@
              [251 175 60]
              [223 74 51]]}})
 
-(def palette (get palettes :purplehaze))
+(def palette (get palettes :solar))
 
 (def w (.-innerWidth js/window))
 (def h (.-innerHeight js/window))

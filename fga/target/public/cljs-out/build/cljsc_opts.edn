@@ -1,0 +1,1 @@
+{:optimizations :advanced, :main sketches.perlin_flow, :output-to "target/public/cljs-out/build-main.js", :output-dir "target/public/cljs-out/build", :asset-path "/cljs-out/build", :aot-cache false}

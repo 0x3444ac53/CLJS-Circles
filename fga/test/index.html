@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Perlin noise flow field</title>
+    <meta name="viewport" #content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+      :root {
+        /* Content Colors */
+        --color-heading: #333333; /* Dark Gray */
+        --color-li: #666666; /* Medium Gray */
+        --color-text: #999999; /* Light Gray */
+        --color-accent: #f4f4f420;
+
+        /* Background Color */
+        --color-background: #ffffff; /* White */
+
+        /* Canvas Rendering Colors (unchanged) */
+        --canvas-1: #f0f0f0; /* Light Gray */
+        --canvas-2: #cccccc; /* Gray */
+        --canvas-3: #dddddd; /* Light Gray */
+        --canvas-4: #e5e5e5; /* Light Gray */
+        --canvas-5: #bebebe; /* Gray */
+        --canvas-6: #d1d1d1; /* Light Gray */
+        --canvas-7: #aaaaaa; /* Gray */
+        --canvas-8: #eaeaea; /* Light Gray */
+        --canvas-9: #cdcdcd; /* Light Gray */
+        --canvas-10: #d8d8d8; /* Light Gray */
+        --canvas-11: #f5f5f5; /* Light Gray */
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      #content {
+        font-family: "Averia Serif Libre", serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        color: var(--color-text);
+      }
+
+      #content h1,
+      #content h2,
+      #content h3 {
+        color: var(--color-heading);
+      }
+
+      #content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      #content h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+      }
+
+      #content h3 {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
+
+      #content ul,
+      #content ol {
+        margin: 20px 0;
+        padding-left: 40px;
+      }
+
+      #content li {
+        color: var(--color-li);
+      }
+
+      #content dl {
+        color: var(--color-li);
+      }
+
+      #content dl dd {
+        color: var(--color-text);
+      }
+
+      #content dl dt {
+        font-weight: bold;
+      }
+
+      #content p {
+        margin: 10px 0;
+      }
+
+      #content a {
+        text-decoration: none;
+      }
+
+      #content a:hover {
+        filter: brightness(120%);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tskills dt {
+        font-size: 1.2em;
+      }
+
+      .tskills dd {
+        display: inline-block;
+      }
+      .fade-in {
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      #content .card {
+        background-color: var(--color-accent);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+        transition: 400ms;
+      }
+
+      #content .card:hover,
+      #content .card:focus {
+        scale: 1.1;
+        background-color: #f4f4f4ff;
+      }
+
+      .contact a {
+        font-size: 0.4em;
+        color: var(--color-text);
+        font-style: oblique;
+        text-decoration: none;
+      }
+
+      #sketch {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Ensure it's behind other#content */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sketch"></div>
+    <script src="js/build-main.js"></script>
+    <div id="content" class="fade-in">
+      <div class="card" tabindex="1">
+        <h1>
+          Nora
+          <span class="contact">
+            <a href="mailto:Nora@Bensa.games">(contact)</a>
+          </span>
+        </h1>
+        <p>
+          26-year-old programmer and avid reader. I am driven primarily by an
+          interest in compilers and programming language design. When I'm not
+          coding, you can find me lost in the pages of queer sci-fi, rom-coms,
+          or indulging in the occasional dose of literary fiction.
+        </p>
+      </div>
+      <div class="card" tabindex="1">
+        <h2>Technical Skills</h2>
+        <dl class="tskills">
+          <dt>Programming Languages:</dt>
+          <dd>Bash</dd>
+          <dd>Python</dd>
+          <dd>Java</dd>
+          <dd>Lua</dd>
+          <dd>Clojure(script)</dd>
+          <dd>VBA (learned out of necessity)</dd>
+          <dd>Javascript</dd>
+          <dt>Game Dev</dt>
+          <dd>LÖVE2d</dd>
+          <dd>Godot</dd>
+          <dd>Processing</dd>
+          <dd>Physics</dd>
+          <dd>Rendering</dd>
+          <dd>Object Management</dd>
+          <dt>Technologies</dt>
+          <dd>Linux</dd>
+          <dd>SQL</dd>
+          <dd>Databases</dd>
+          <dd>SCORM</dd>
+          <dd>Python Flask</dd>
+          <dd>HTTP protocol</dd>
+        </dl>
+      </div>
+      <div class="card" tabindex="1">
+        <h2>Soft Skills</h2>
+        <dl>
+          <dt>Project Management</dt>
+          <dd>
+            At Bensa Games, I spearhead resource allocation and labor
+            distribution across multiple projects. This role involves
+            orchestrating team efforts, optimizing workflows, and ensuring
+            timely project delivery. By effectively coordinating resources, I
+            contribute to the successful execution of diverse initiatives within
+            the organization.
+          </dd>
+          <dt>Self Directed</dt>
+          <dd>
+            In my current role, I designed, implemented, and maintained a
+            database and front-end system for coordinating schedules among team
+            leaders. This project required a high degree of autonomy and
+            initiative, demonstrating my ability to manage complex tasks
+            independently. My self-directed approach ensured seamless
+            integration and efficient scheduling processes for the team.
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </body>
+</html>
